@@ -1,0 +1,23 @@
+name: Commit Checks
+on: [push, pull_request] 
+
+jobs:
+  check_code:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false 
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: [3.7]
+    steps: 
+      - name: Checkout code 
+        uses: actions/checkout@v2 
+      - name: Setup Python
+        uses: actions/setup-python@v2 
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+      - name: Install dependencies
+        run: | 
+          python -m pip install --upgrade pip setuptools wheel
+          pip install -r requirements.txt
