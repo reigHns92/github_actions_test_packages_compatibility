@@ -20,3 +20,7 @@ pre-commit==2.19.0
 pylint==2.13.7
 pytest==6.0.2
 pytest-cov==2.10.1
+xlrd==2.0.1
+lightgbm==3.3.2
+catboost==1.0.6
+automl==2.9.9
